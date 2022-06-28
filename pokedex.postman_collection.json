@@ -1,0 +1,26 @@
+{
+	"info": {
+		"_postman_id": "722d81c7-c05e-4250-aa0f-a6c060a29dcb",
+		"name": "pokedex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21020418"
+	},
+	"item": [
+		{
+			"name": "Get Pokemon Infos",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pokemon List",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
