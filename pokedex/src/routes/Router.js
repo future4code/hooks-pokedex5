@@ -10,11 +10,8 @@ function Router(){
         <BrowserRouter>
             <Routes>
                 <Route index path="/" element={<HomeScreen />} />
-                
                 <Route path="/pokedex" element={<PokedexScreen />} />
-
                 <Route path="/:id/details" element={<DetailsScreen />} />
-
                 <Route path="*" element={<ErrorScreen />} />
             </Routes>
         </BrowserRouter>

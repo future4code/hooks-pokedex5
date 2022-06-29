@@ -1,12 +1,12 @@
 import React from "react";
 
-import { Router } from "react-router-dom";
+import Router from "../src/routes/Router";
 
 const App = () => {
   return (
-    <>
+    <div>
       <Router />
-    </>
+    </div>
   );
 }
 
