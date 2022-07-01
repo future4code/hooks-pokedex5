@@ -11,6 +11,7 @@ export default createGlobalStyle`
         background-color:rgba(0,0,0,.2);
         min-width:100vw;
         min-height:100vh;
+        max-height:100vh;
         overflow-y:scroll;
         scrollbar-width: none;
         -ms-overflow-style: none; 
@@ -26,7 +27,10 @@ export default createGlobalStyle`
         button{
             font-family:inherit;
         }
-    
+        
+        background-image:url("https://wallpaperaccess.com/full/3952024.png");
+        background-size:cover;
+
     //colors----------------------------
         --normal:#A8A878;
         --fighting:#C03028;

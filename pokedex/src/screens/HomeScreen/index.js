@@ -1,12 +1,12 @@
 import React from "react";
-import CardHome from "../../components/CardHome";
+import HomeList from "../../components/HomeList";
 import {Container} from './styles'
 
 const HomeScreen=()=>{
  
   return (
    <Container>
-    <CardHome/>
+      <HomeList/>
    </Container>
   );
 }
