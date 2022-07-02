@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container } from './styles'
-import CardHome from '../../components/CardPokemon/index'
+import CardPokemon from '../../components/CardPokemon/index'
+import GlobalContext from "../../contexts/GlobalContext";
+import Header from "../../components/Header/index"
+
 
 
 const PokedexScreen = () => {
+  const {pokedex, setPokedex} = useContext(GlobalContext)
+  
+  const removePokemon = (url) => {
+
+    const newPokedexList = pokedex && pokedex.filter((pokeUrl) => {
+      return  pokeUrl !== url
+    })
+
+    setPokedex(newPokedexList)
+  }
+
+
+  const renderPokemons = pokedex && pokedex.map((url) => {
+    return (
+      <CardPokemon
+      key={url}  
+      link={url} 
+      actionName="Remove"
+      onClick={()=>{removePokemon(url)}}
+     />
+    )
+    
+  })
   return (
     <Container>
-      <CardHome />
+      <Header/>
+      {renderPokemons}
     </Container>
   );
 }

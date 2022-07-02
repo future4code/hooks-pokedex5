@@ -1,10 +1,11 @@
 import React from "react";
-import Header from "../../components/Header";
-
 import HomeList from "../../components/HomeList";
 import {Container} from './styles'
+import Header from "../../components/Header";
 
-const HomeScreen = () =>{
+const HomeScreen = () => {
+
+
   return (
 
    <Container>
