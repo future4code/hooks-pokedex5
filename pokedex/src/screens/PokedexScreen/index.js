@@ -6,6 +6,7 @@ import Header from "../../components/Header/index"
 
 
 
+
 const PokedexScreen = () => {
   const {pokedex, setPokedex} = useContext(GlobalContext)
   

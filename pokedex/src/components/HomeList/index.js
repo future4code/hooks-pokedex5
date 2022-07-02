@@ -9,31 +9,50 @@ import GlobalContext from "../../contexts/GlobalContext";
 
 const HomeList=()=>{
 
-  const {pokedex,setPokedex} = useContext(GlobalContext);
+  const {pokedex,setPokedex,list,setList} = useContext(GlobalContext);
 
   const [quantity,setQuantity] = useState('20')
   const [offset,setOffset] = useState('0')
   const url = `${pokemonListUrl}/?limit=${quantity}&offset=${offset}`
-  const [list,setList] = useState([])
+ 
 
   useEffect(()=>requestData,[])
 
   const requestData =async () =>{
     const res = await axios.get(url)
-    setList(res.data.results)
-  }
+    const listRequest = res.data.results;
+    const newList = listRequest.filter((item)=>{
+      const find = pokedex.find((url)=>{
+        if(item.url === url){
+          return true
+        }}
+      )
+      if(!find){
+        return item
+      }
+  })
+  setList(newList)
+}
   const renderList = list && list.map((item)=>{
-  
+    
       return <CardPokemon 
       link={item.url} 
       key={item.url} 
       actionName="I Choose U!" 
-      onClick={()=>addToPokedex(item.url)}/>
+      onClick={()=>addToPokedex(item.url)}
+      />
    
   })
 
-  const addToPokedex = (url)=>{
-    setPokedex([...pokedex,url])
+  const addToPokedex = (id)=>{
+    setPokedex([...pokedex,id])
+    const newList = list.filter((item)=>{
+      if(item.url !== id){
+        return item
+      }
+    }
+   )
+   setList(newList)
   }
 
   return (

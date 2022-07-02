@@ -13,10 +13,11 @@ function Router(){
         'https://pokeapi.co/api/v2/pokemon/1/',
     ]);
     const [details,setDetails] = useState('');
+    const [list,setList] = useState([])
 
     return(
         <BrowserRouter>
-        <GlobalContext.Provider value={{pokedex,setPokedex,details,setDetails}}>
+        <GlobalContext.Provider value={{pokedex,setPokedex,details,setDetails,list,setList}}>
             <Routes>
                 <Route index path="/" element={<HomeScreen />} />
                 <Route path="/pokedex" element={<PokedexScreen />} />
