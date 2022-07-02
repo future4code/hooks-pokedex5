@@ -38,7 +38,7 @@ const HomeList=()=>{
       return <CardPokemon 
       link={item.url} 
       key={item.url} 
-      actionName="I Choose U!" 
+      actionName="I Choose u!" 
       onClick={()=>addToPokedex(item.url)}
       />
    
