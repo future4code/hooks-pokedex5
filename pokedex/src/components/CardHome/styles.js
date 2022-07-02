@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-margin:30px;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:space-between;
-    width:300px;
-    height:400px;
-    min-width:300px;
-    min-height:400px;
+    flex:none;
+    width:250px;
+    height:300px;
+    min-width:250px;
+    min-height:300px;
     padding:10px;
     border-radius:20px;
     transition:0.5s;
@@ -32,7 +32,7 @@ margin:30px;
             0%{
                 transform:translateY(0) scale(1);
             }50%{
-                transform:translateY(-10px) scale(1.02);
+                transform:translateY(-10px) scale(1.1);
             }100%{
                 transform:translateY(0) scale(1);
             }
@@ -41,7 +41,7 @@ margin:30px;
 
     div:nth-child(1){
         width:100%;
-        height:90%;
+        height:60%;
         display:flex;
         align-items:center;
         justify-content:center;
@@ -50,6 +50,7 @@ margin:30px;
 
         img{
         width:70%;
+        max-height:90%;
         }
     };
     
