@@ -3,11 +3,13 @@ import DetailsScreen from "../screens/DetailsScreen";
 import ErrorScreen from "../screens/ErrorScreen";
 import HomeScreen from "../screens/HomeScreen";
 import PokedexScreen from "../screens/PokedexScreen";
+import Header from "../components/Header/index"
 
 
 function Router(){
     return(
         <BrowserRouter>
+        <Header/>
             <Routes>
                 <Route index path="/" element={<HomeScreen />} />
                 <Route path="/pokedex" element={<PokedexScreen />} />
