@@ -1,13 +1,13 @@
 import React from "react";
 import CardHome from "../../components/CardHome";
-import {Container} from './styles'
+import { Container } from './styles'
 
-const HomeScreen=()=>{
- 
+const HomeScreen = () => {
+
   return (
-   <Container>
-    <CardHome/>
-   </Container>
+    <Container>
+      <CardHome />
+    </Container>
   );
 }
 

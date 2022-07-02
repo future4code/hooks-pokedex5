@@ -1,11 +1,13 @@
 import React from "react";
-import {Container} from './styles'
+import { Container } from './styles'
+import CardHome from '../../components/CardHome/index'
 
-const PokedexScreen=()=>{
+
+const PokedexScreen = () => {
   return (
-   <Container>
-
-   </Container>
+    <Container>
+      <CardHome />
+    </Container>
   );
 }
 
