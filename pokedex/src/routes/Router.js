@@ -3,13 +3,15 @@ import DetailsScreen from "../screens/DetailsScreen";
 import ErrorScreen from "../screens/ErrorScreen";
 import HomeScreen from "../screens/HomeScreen";
 import PokedexScreen from "../screens/PokedexScreen";
-import Header from "../components/Header/index"
+// import Header from "../components/Header/index"
 import GlobalContext from "../contexts/GlobalContext";
 import {useState} from 'react';
 
 
 function Router(){
-    const [pokedex,setPokedex] = useState([]);
+    const [pokedex,setPokedex] = useState([
+        'https://pokeapi.co/api/v2/pokemon/1/',
+    ]);
     const [details,setDetails] = useState('');
     const [list,setList] = useState([])
 
