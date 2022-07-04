@@ -9,9 +9,7 @@ import {useState} from 'react';
 
 
 function Router(){
-    const [pokedex,setPokedex] = useState([
-        'https://pokeapi.co/api/v2/pokemon/1/',
-    ]);
+    const [pokedex,setPokedex] = useState([]);
     const [details,setDetails] = useState('');
     const [list,setList] = useState([])
 
