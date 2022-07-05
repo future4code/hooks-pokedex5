@@ -1,57 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Container, DetailsContainer } from "../CardDetails/styles";
 import axios from 'axios'
+import { pokemonListUrl } from "../../constants";
+import GlobalContext from "../../contexts/GlobalContext";
+import useRequestData from "../../hooks/useRequestData";
 
 
 const CardDetails = () => {
 
-//**************  só pra testar estilização ******************
-    const [poke, setPoke] = useState({})
+    const {idPoke} = useContext(GlobalContext)
+    const [data] = useRequestData(`${pokemonListUrl}/${idPoke}`)
 
-    useEffect(() => {
-        axios.get('https://pokeapi.co/api/v2/pokemon/1/')
-            .then((response)=>{
-                setPoke(response.data)
-                console.log(response.data)
-            })
-            .catch((error)=>{
-                console.log(error.response)
-            })
-    }, [])
-
-//************************************************************
 
     return (
         <Container>
-            <h1>{poke.name}</h1>
-            <span>
-                <img src={poke.sprites.front_default} alt={poke.name + " front"}/>
-                <img src={poke.sprites.back_default} alt={poke.name + " back"}/>
-            </span>
-            
-            <DetailsContainer>
+        
             <div>
+                <h1>{data && data.name}</h1>
+                
+                <img src={data && data.sprites && data.sprites.front_default} alt={data && data.name + " front"}/>
+
+                <img src={data && data.sprites && data.sprites.back_default} alt={data && data.name + " back"}/>
+            </div>
+
+            <DetailsContainer>
+                <div>
                     <h3>Stats:</h3>
-                    {poke && poke.stats.map((statistic, index) => {
+
+                    {data && data.stats && data.stats.map((statistic, index) => {
                         return(
-                            <li key={index}>{statistic.stat.name}: {statistic.base_stat}</li>     
+                            <p key={index}>{statistic.stat.name}: {statistic.base_stat}</p>     
                         )
                     })}
                 </div>
 
                 <div>
                     <h3>Type:</h3>
-                    {poke && poke.types.map((poketype, index) => {
-                        return <li key={index}>{poketype.type.name}</li>
+
+                    {data && data.types && data.types.map((poketype, index) => {
+                        return <p key={index}>{poketype.type.name}</p>
                     })}
-            
+
+                    <br/>
+
                     <h3>Moves:</h3>
-                    {poke && poke.moves.map((movement, index)=>{
-                            return (index<3 && <li key={index}>{movement.move.name}</li>)
+
+                    {data && data.moves && data.moves.map((movement, index)=>{
+                            return (index<3 && <p key={index}>{movement.move.name}</p>)
                     })}
                 </div>
             </DetailsContainer>
-            
         </Container>
     )
 }

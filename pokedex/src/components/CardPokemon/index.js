@@ -22,6 +22,7 @@ const CardPokemon=(props)=>{
         setPokemon(newPokemon)
     }
     
+
     
 
     return (
