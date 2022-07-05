@@ -1,10 +1,10 @@
 import styled from 'styled-components';
+import PokeImg from "../../assets/img/background-detailcard.png"
 
 export const Container = styled.div`
     height: 85vh;
     width: 85vw;
     border-radius: 15px;
-    //background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 1px;
@@ -12,10 +12,10 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    //background: url(https://wallpaperaccess.com/full/5818315.png);
+    background-image: url(${PokeImg});
     background-repeat: no-repeat;
-    //transform: rotate(90deg);
-  
+    background-size: contain;
+    color: black;
     
     
 `;
@@ -26,6 +26,5 @@ export const DetailsContainer = styled.div`
     justify-content: space-evenly;
     margin: 1px;
     align-items: center;
-    width: 100%;
-    text-align: center;
+    width: 70%;
 `
