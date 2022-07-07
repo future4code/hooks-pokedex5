@@ -21,7 +21,9 @@ const HomeList=()=>{
   const requestData =async () =>{
     const res = await axios.get(url)
     const listRequest = res.data.results;
+
     const newList = listRequest.filter((item)=>{
+      
       const find = pokedex.find((url)=>{
         if(item.url === url){
           return true
