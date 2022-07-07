@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { Container, DetailsContainer } from "../CardDetails/styles";
-import axios from 'axios'
+import React, { useContext } from "react";
+import { Container, PokeType, TypeContainer, StatName, StatsContainer, Number, MovesName } from "../CardDetails/styles";
 import { pokemonListUrl } from "../../constants";
 import GlobalContext from "../../contexts/GlobalContext";
 import useRequestData from "../../hooks/useRequestData";
@@ -10,46 +9,52 @@ const CardDetails = () => {
 
     const {idPoke} = useContext(GlobalContext)
     const [data] = useRequestData(`${pokemonListUrl}/${idPoke}`)
+    const typecolor = []
 
+    
 
     return (
-        <Container>
-        
+        <Container color={typecolor}>
             <div>
                 <h1>{data && data.name}</h1>
                 
                 <img src={data && data.sprites && data.sprites.front_default} alt={data && data.name + " front"}/>
 
                 <img src={data && data.sprites && data.sprites.back_default} alt={data && data.name + " back"}/>
+                
+                <TypeContainer>
+                    {data && data.types && data.types.map((poketype, index) => {     
+                        typecolor.push(poketype.type.name)                  
+                        return <PokeType color={poketype.type.name} key={index}>{poketype.type.name}</PokeType>
+                    })}
+                </TypeContainer>
             </div>
 
-            <DetailsContainer>
-                <div>
-                    <h3>Stats:</h3>
+            <div>
+                <br/>
 
-                    {data && data.stats && data.stats.map((statistic, index) => {
-                        return(
-                            <p key={index}>{statistic.stat.name}: {statistic.base_stat}</p>     
-                        )
-                    })}
-                </div>
+                <h4>STATS:</h4>
 
-                <div>
-                    <h3>Type:</h3>
+                {data && data.stats && data.stats.map((statistic, index) => {
+                    return(
+                        <StatsContainer key={index}>
+                            <StatName>{statistic.stat.name}:</StatName> 
+                            <Number>{statistic.base_stat}</Number>
+                        </StatsContainer>     
+                    )
+                })}
+            </div> 
 
-                    {data && data.types && data.types.map((poketype, index) => {
-                        return <p key={index}>{poketype.type.name}</p>
-                    })}
+            <br/>
 
-                    <br/>
+            <div>
+                <h4>MOVES:</h4>
 
-                    <h3>Moves:</h3>
-
-                    {data && data.moves && data.moves.map((movement, index)=>{
-                            return (index<3 && <p key={index}>{movement.move.name}</p>)
-                    })}
-                </div>
-            </DetailsContainer>
+                {data && data.moves && data.moves.map((movement, index)=>{
+                    return (index<3 && <MovesName color={typecolor} key={index}>{movement.move.name}</MovesName>)
+                })}
+            </div>
+            
         </Container>
     )
 }
