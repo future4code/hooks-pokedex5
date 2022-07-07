@@ -10,12 +10,13 @@ import {useState} from 'react';
 
 function Router(){
     const [pokedex,setPokedex] = useState([]);
-    const [details,setDetails] = useState('');
+    const [details,setDetails] = useState(''); //n sei se esse vocês fizeram p mim -gi- mas de qlqr forma fiz outro
     const [list,setList] = useState([])
+    const [idPoke, setIdPoke] = useState('')
 
     return(
         <BrowserRouter>
-        <GlobalContext.Provider value={{pokedex,setPokedex,details,setDetails,list,setList}}>
+        <GlobalContext.Provider value={{pokedex, setPokedex, details, setDetails, list, setList, idPoke, setIdPoke}}>
             <Routes>
                 <Route index path="/" element={<HomeScreen />} />
                 <Route path="/pokedex" element={<PokedexScreen />} />
