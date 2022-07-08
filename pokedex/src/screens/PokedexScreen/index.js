@@ -4,14 +4,17 @@ import CardPokemon from '../../components/CardPokemon/index'
 import GlobalContext from "../../contexts/GlobalContext";
 import Header from "../../components/Header/index"
 import Warning from "../../components/Warning";
+import { goToDetails } from "../../coordinator/coordinator";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 
 const PokedexScreen = () => {
-  // armazena a url dos pokemons adicionados na home 
-  const { pokedex, setPokedex } = useContext(GlobalContext) 
+  const { pokedex, setPokedex, setIdPoke } = useContext(GlobalContext)
+  const navigate = useNavigate()
+
 
 // Atualiza o estado pkedex retonando um array sem a url (recebida por parametro) do pokemon removido  
   const removePokemon = (url) => {
@@ -36,11 +39,16 @@ const PokedexScreen = () => {
         key={url}
         link={url}
         actionName="Remove"
-        onClick={() => {removePokemon(url)}}
+        onClick={() => { removePokemon(url) }}
+        onClickDetails={() => detailsButton(url.slice(34,35))}
       />
-    )
+    )})
 
-  })
+  const detailsButton = (id) => {
+    goToDetails(navigate, id)
+    setIdPoke(id)
+  }
+
   return (
     <Container>
       <Header />

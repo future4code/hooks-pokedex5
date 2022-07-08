@@ -7,7 +7,7 @@ const DetailsScreen = () => {
     
     return (
         <>
-            <Header/>
+            <Header detailPage={true}/>
 
             <Container>
               <CardDetails/> 
