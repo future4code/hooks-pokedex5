@@ -6,6 +6,8 @@ import axios from 'axios';
 import GlobalContext from "../../contexts/GlobalContext";
 import { goToDetails } from "../../coordinator/coordinator";
 import { useNavigate } from "react-router-dom";
+import Pagination from "../Pagination";
+import SelectPagination from "../SelectPagination";
 
 
 
@@ -18,24 +20,10 @@ const HomeList = () => {
 
   const [itensPerPage, setItensPerPage] = useState(30)
   const [currentPage, setCurrentPage] = useState(0)
-
-  
   const pages = Math.ceil(list && list.length / itensPerPage)
   const startIndex = currentPage * itensPerPage
   const endIndex =  startIndex + itensPerPage
   const currentPokemons = list && list.slice(startIndex, endIndex)
-
-
-  const buttonsPages = Array.from(Array(pages), (_, index) => {
-    return <button
-      key={index}
-      value={index}
-      onClick={() => setCurrentPage(index)}
-    >
-      {index + 1}
-    </button>
-  })
-
 
   const navigate = useNavigate()
 
@@ -92,7 +80,16 @@ const HomeList = () => {
   return (
     <Container>
       <Buttons>
-        {buttonsPages}
+        <SelectPagination
+        itensPerPage={itensPerPage}
+        setItensPerPage={setItensPerPage}
+        />
+       
+        <Pagination
+        pages={pages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        />
       </Buttons>
       {renderList}
     </Container>
