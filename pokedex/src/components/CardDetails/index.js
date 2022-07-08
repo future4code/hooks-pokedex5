@@ -11,7 +11,6 @@ const CardDetails = () => {
     const [data] = useRequestData(`${pokemonListUrl}/${idPoke}`)
     const typecolor = []
 
-    
 
     return (
         <Container color={typecolor}>

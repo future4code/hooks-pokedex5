@@ -10,3 +10,7 @@ export const goToDetails = (navigate, id) => {
     navigate(`/${id}/details`)
 }
 
+export const goBack = (navigate) => {
+    navigate(-1)
+}
+
