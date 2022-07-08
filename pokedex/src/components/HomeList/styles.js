@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    margin-top: 5%;
     width:90vw;
     display:flex;
     flex-direction:row;
@@ -12,3 +13,9 @@ export const Container = styled.div`
         width:100vw;
     }
 `;
+
+export const Buttons = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`
