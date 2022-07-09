@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect,useState } from "react";
 import {Container} from './styles';
+import unknown from '../../assets/img/unknown.png'
 
 const CardPokemon=(props)=>{
 
@@ -16,7 +17,7 @@ const CardPokemon=(props)=>{
         const res = await axios.get(props.link)
         const newPokemon = {
             name:res.data.name,
-            photoLink:res.data.sprites.other.dream_world.front_default,
+            photoLink:res.data.sprites.other.dream_world.front_default || unknown ,
             type:res.data.types[0].type.name
         }
         setPokemon(newPokemon)

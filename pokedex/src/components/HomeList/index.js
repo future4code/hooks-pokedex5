@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import CardPokemon from "../CardPokemon";
 import { pokemonListUrl } from "../../constants/index.js";
-import { Buttons, Container } from './styles';
+import { Buttons, Container, SearchArea } from './styles';
 import axios from 'axios';
 import GlobalContext from "../../contexts/GlobalContext";
 import { goToDetails } from "../../coordinator/coordinator";
@@ -17,7 +17,7 @@ const HomeList = () => {
 
  
   const url = `${pokemonListUrl}/?limit=1151`
-
+  const [search,setSearch] = useState('')
   const [itensPerPage, setItensPerPage] = useState(30)
   const [currentPage, setCurrentPage] = useState(0)
   const pages = Math.ceil(list && list.length / itensPerPage)
@@ -27,26 +27,25 @@ const HomeList = () => {
 
   const navigate = useNavigate()
 
-  useEffect(() => requestData, [])
+  useEffect(() => requestData,[list])
+
+  
 
   const requestData = async () => {
     const res = await axios.get(url)
     const listRequest = res.data.results;
   
 
-    const newList = listRequest.filter((item) => {
-
+    const newList = listRequest
+    .filter((pokemon)=>pokemon.name.toLowerCase().includes(search.toLocaleLowerCase()))
+    .filter((item) => {
       const find = pokedex.find((url) => {
         if (item.url === url) {
           return true
-        }
-      }
-      )
+        }})
       if (!find) {
         return item
-      }
-    })
-    
+      }})
     setList(newList)
   }
   const renderList = currentPokemons.map((item) => {
@@ -76,22 +75,41 @@ const HomeList = () => {
     goToDetails(navigate, id)
     setIdPoke(id)
   }
+  
+  const handleInput = async(e)=>{
+    setSearch(e.target.value)
+  }
 
   return (
     <Container>
       <Buttons>
+        <SearchArea>
         <SelectPagination
         itensPerPage={itensPerPage}
         setItensPerPage={setItensPerPage}
         />
-       
+        <input 
+        onChange={handleInput} 
+        value={search}
+        placeholder="Search pokemons by name"
+        />
+        </SearchArea>
         <Pagination
         pages={pages}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         />
+
       </Buttons>
       {renderList}
+      <Buttons> 
+         <Pagination
+         pages={pages}
+         currentPage={currentPage}
+         setCurrentPage={setCurrentPage}
+         />
+      </Buttons>
+      
     </Container>
   );
 }
