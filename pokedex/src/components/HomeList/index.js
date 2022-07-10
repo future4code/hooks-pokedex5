@@ -8,6 +8,7 @@ import { goToDetails } from "../../coordinator/coordinator";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../Pagination";
 import SelectPagination from "../SelectPagination";
+import useRequestData from "../../hooks/useRequestData";
 
 
 
@@ -26,15 +27,18 @@ const HomeList = () => {
   const currentPokemons = list && list.slice(startIndex, endIndex)
 
   const navigate = useNavigate()
-
-  useEffect(() => requestData,[list])
-
+  
+  // useEffect(() => requestData,[])
+  // useEffect(() => requestData,[list])
+  useEffect(()=>{requestData()},[])
+  useEffect(()=>{requestData()},[pokedex])
+  
   
 
   const requestData = async () => {
     const res = await axios.get(url)
     const listRequest = res.data.results;
-  
+    // console.log('oi')
 
     const newList = listRequest
     .filter((pokemon)=>pokemon.name.toLowerCase().includes(search.toLocaleLowerCase()))
@@ -48,7 +52,7 @@ const HomeList = () => {
       }})
     setList(newList)
   }
-  const renderList = currentPokemons.map((item) => {
+  const renderList = list && currentPokemons && currentPokemons.map((item) => {
 
     return <CardPokemon
       link={item.url}
