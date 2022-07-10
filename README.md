@@ -5,7 +5,7 @@
 
 ## 🚀 Resumo
 
-``` 
+
 A ideia é que usemos a [Poke Api](https://pokeapi.co/) como fonte de dados para o projeto. Ela é uma API pública, bastante utilizada como fonte de dados para aplicações focadas em aprendizado de programação. É também uma API particularmente comum em Cases de Processos Seletivos. 
 
 O projeto deve ter as seguintes **três páginas:**
@@ -13,7 +13,7 @@ O projeto deve ter as seguintes **três páginas:**
 1. **Home:** o usuário deve receber uma lista de pokemons vinda da API. Ele pode armazenar Pokemons em sua Pokedex clicando em cada um.
 2. **Pokedex:** o usuário deve pode ver os Pokemons que foram adicionados em sua Pokedex. 
 3. **Detalhe do Pokemon:** Deve ser possível ir para uma página de detalhes do Pokemon ao clicar no mesmo, estando tanto na Home quanto na Pokedex.
-```
+
  
 ### 📋  Requisitos
 
@@ -55,6 +55,10 @@ Observação importante:
 Todas essas informações solicitadas no wireframe estão disponíveis no endpoint de detalhes do Pokemon. Procure por esse endpoint na documentação da API, e use o Postman para testar e entender seu funcionamento.
 
 ### 🔧 Imagens e estrutura 
+ 
+ ![image](https://user-images.githubusercontent.com/98292838/178165400-bff029f5-0bc8-4923-ae00-90d1c18c026c.png)
+![image](https://user-images.githubusercontent.com/98292838/178165409-52bfaa5c-bc83-4448-bb39-c622fba7adc5.png)
+![image](https://user-images.githubusercontent.com/98292838/178165417-3636cb73-424d-4809-95c1-8c0d21c280b9.png)
 
 
 
@@ -69,7 +73,7 @@ Todas essas informações solicitadas no wireframe estão disponíveis no endpoi
 <img witdh="40px" height="40px" src="https://user-images.githubusercontent.com/98292838/163856535-00dbc8fe-e415-4fa3-8d81-50975fb8839c.png">
 </p>
 
-## 🔗 Link Surge:
+## 🔗 Link Surge: https://pokedex-hooks-5.surge.sh
 
 
 ## ✒️ Autores
