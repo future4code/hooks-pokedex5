@@ -11,7 +11,7 @@ export const Container = styled.div`
     color: black;
     text-align: center;
     margin: 10px;
-    border: 5px solid ${(props)=>`var(--${props.color})`};
+    border: 5px solid black;
 `;
 
 export const TypeContainer = styled.div`
